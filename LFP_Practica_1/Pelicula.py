@@ -4,4 +4,3 @@ class Pelicula:
         self.actores = actores
         self.anio = anio
         self.genero = genero
-        

@@ -1,4 +1,3 @@
-from main import *
 from Lista_enlazada import *
 from Pelicula import *
 
@@ -24,12 +23,12 @@ class Lectura:
         pelis = Lista_enlazada()
     
         for linea in lista_datos: #procesa cada linea del archivo
-            lista_general = linea.split(";") #se divide cada linea utilizando ; de separador
+            lista_general = linea.strip().split(";") #se divide cada linea utilizando ; de separador
         
             nombre = lista_general[0] #se extrae el nombre
-            actor= lista_general[1].split(",") # se extraen como una cadena separada por , y se convierte a una []
-            anio = lista_general[2]
-            genero=lista_general[3].rstrip().split(",") #rstrip elimina cualquier espacio en blanco al final de la linea
+            actor= [a.strip() for a in lista_general[1].split(",")] # se extraen como una cadena separada por , y se convierte a una []
+            anio = lista_general[2].strip()
+            genero=lista_general[3].strip() #rstrip elimina cualquier espacio en blanco al final de la linea
         
             nueva_peli = Pelicula(nombre,actor,anio,genero) #se almacenan los valores 
             #nuevo = Nodo(nueva_peli)
