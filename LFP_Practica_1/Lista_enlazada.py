@@ -1,10 +1,11 @@
 from Nodo import Nodo
 from Pelicula import Pelicula
+from graphviz import Digraph
 
 class Lista_enlazada:
     def __init__(self):
         self.primero = None
-        
+
     def insertar(self,pelicula):
         nuevo_nodo = Nodo(pelicula) #crea un nodo y le asigna una pelicula
         if self.primero is None: #si la lista esta vacia
@@ -47,7 +48,7 @@ class Lista_enlazada:
             i+=1
             actual = actual.siguiente
         print()
-            
+
     def mostrarActores(self):
         actual = self.primero #muestra la lita de peliculas
         i=1
@@ -70,7 +71,7 @@ class Lista_enlazada:
             return #termina la funcion luego de encontrar la pelicula
         else:
             print("\nNo se encontro la pelicula \n")
-    
+
     def mostrarActores(self):
         actual = self.primero
         i = 1
@@ -87,7 +88,7 @@ class Lista_enlazada:
         for actor in actores_: #recorre la lista []
             print("\t-"+actor)
     
-    
+
     def buscar_actor(self, nombre_actor):
         actual = self.primero
         peliculas_encontradas = [] #lista auxiliar que almacena el nombre de cada pelicula
@@ -103,7 +104,7 @@ class Lista_enlazada:
                     print("- ", pelicula)
         else:
             print("\tNo se encontraron peliculas en las que participe el actor, ",nombre_actor)
-    
+
     def buscar_anio(self, entrada):
         actual = self.primero
         anio_peli = []
@@ -123,7 +124,7 @@ class Lista_enlazada:
         else:
             print("El año,",entrada," no se encuentra en el sistema.")
                 
-                
+
     def buscar_genero(self,entrada):
         actual = self.primero
         genero_peli = []
@@ -138,3 +139,21 @@ class Lista_enlazada:
                 print("\t-",genero)
         else:
             print("No se encontro el genero",entrada)
+
+    def graph(self):
+        dot = Digraph(filename='peliculas.gv', node_attr={'shape': 'rectangle'}) # Crear una instancia de Digraph
+        # recorremos la lista y creamos los nodos
+        actual = self.primero
+        while actual:
+            etiqueta_nodo = "{}\n({},{})".format(actual.dato.nombre, actual.dato.genero, actual.dato.anio)
+            dot.node(actual.dato.nombre, label=etiqueta_nodo)
+            actual = actual.siguiente
+        # recorremos la lista de nuevo y creamos las conexiones
+        actual = self.primero
+        while actual:
+            for actor in actual.dato.actores:
+                dot.edge(actual.dato.nombre,actor)
+            actual = actual.siguiente
+        # mostramos el grafo
+        dot.render("../Grafico/peliculas",format="pdf")
+        

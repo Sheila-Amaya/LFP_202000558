@@ -1,8 +1,9 @@
 
 import os
 from Pelicula import Pelicula
-from Lista_enlazada import *
+from Lista_enlazada import Lista_enlazada
 from Lectura import *
+
 
 lista_pelis = Lista_enlazada() #Lista global que almacena  todas las peliculas 
 
@@ -116,15 +117,14 @@ def menu():
                         menu()
 
             elif opc == "4":
-                pass
+                lista_pelis.graph()
             elif opc == "5":
                 print("¡Hasta pronto!")
-                input("presiona cualquier letra para continura...")
+                input("presiona cualquier letra para continuar...")
                 limpiarPantalla()
                 exit(0)
             else:
                 print("Ingrese una opción valida, por favor.")
-
 
 
 if __name__ == '__main__':
