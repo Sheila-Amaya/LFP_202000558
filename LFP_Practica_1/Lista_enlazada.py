@@ -49,14 +49,14 @@ class Lista_enlazada:
             actual = actual.siguiente
         print()
 
-    def mostrarActores(self):
+    def mostrarP_A(self):#no se usa
         actual = self.primero #muestra la lita de peliculas
         i=1
         while actual:
                 print(str(i)+". ",actual.dato.nombre,)
                 actual = actual.siguiente
                 i +=1
-        num_peli = input("\n\tIngrese el numero de la pelicula seleccionanda : ")
+        num_peli = input("\n\tIngrese el número de la pelicula seleccionanda para ver sus actores: ")
         actual = self.primero
         
         i=1
@@ -72,7 +72,7 @@ class Lista_enlazada:
         else:
             print("\nNo se encontro la pelicula \n")
 
-    def mostrarActores(self):
+    def mostrarActores(self):#mostrar actores sin repetir
         actual = self.primero
         i = 1
         actores_ = [] #lista aux para almacenar los actores
@@ -103,7 +103,7 @@ class Lista_enlazada:
                 for pelicula in peliculas_encontradas: #muestra la lista de peliculas encontradas
                     print("- ", pelicula)
         else:
-            print("\tNo se encontraron peliculas en las que participe el actor, ",nombre_actor)
+            print("\tNo se encontraron peliculas en las que participo el actor, ",nombre_actor)
 
     def buscar_anio(self, entrada):
         actual = self.primero
@@ -145,7 +145,7 @@ class Lista_enlazada:
         # recorremos la lista y creamos los nodos
         actual = self.primero
         while actual:
-            etiqueta_nodo = "{}\n({},{})".format(actual.dato.nombre, actual.dato.genero, actual.dato.anio)
+            etiqueta_nodo = "{}\n[{},{}]".format(actual.dato.nombre, actual.dato.genero, actual.dato.anio)
             dot.node(actual.dato.nombre, label=etiqueta_nodo)
             actual = actual.siguiente
         # recorremos la lista de nuevo y creamos las conexiones
@@ -155,5 +155,6 @@ class Lista_enlazada:
                 dot.edge(actual.dato.nombre,actor)
             actual = actual.siguiente
         # mostramos el grafo
+        print("Grafico generado con exito..")
         dot.render("../Grafico/peliculas",format="pdf")
         

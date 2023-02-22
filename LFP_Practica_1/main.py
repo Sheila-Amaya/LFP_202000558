@@ -35,7 +35,7 @@ def menu():
             print("\t\t3. Filtrado ")
             print("\t\t4. Gráfico ")
             print("\t\t5. Salir ")
-            print("=====================================================================\n")
+            print("=======================================================================\n")
             opc = input("Ingrese una opcion... ")
             limpiarPantalla()
 
@@ -62,7 +62,7 @@ def menu():
             elif opc == "2":
                 op = None
                 while (op != 3):
-                    print("\n======================== GESTIONAR PELICULAS ======================")
+                    print("\n======================== GESTIONAR PELICULAS ========================")
                     print( "\t\t1.Mostrar peliculas")
                     print( "\t\t2.Mostrar Actores")
                     print( "\t\t3.Regresar a menu principal")
@@ -77,7 +77,7 @@ def menu():
 
                     elif o == "2":
                         print("\n============================ ACTORES ==============================")
-                        lista_pelis.mostrarActores()
+                        lista_pelis.mostrarP_A()
                         print("=====================================================================\n")
                     elif o == "3":
                         menu()
@@ -87,7 +87,7 @@ def menu():
             elif opc == "3":
                 op = None
                 while (op != 3):
-                    print("\n============================== FILTRADO ===========================")
+                    print("\n============================== FILTRADO ============================")
                     print( "\t\t1.Por Actor")
                     print( "\t\t2.Por Año")
                     print( "\t\t3.Por Genero")
@@ -103,13 +103,13 @@ def menu():
                         lista_pelis.buscar_actor(name)
                         print("=====================================================================\n")
                     elif o == "2":
-                        print('\n========================== LISTA POR AÑO ==========================')
+                        print('\n========================== LISTA POR AÑO ============================')
                         entrada = input("Ingrese el año de la pelicula que desea buscar: ").strip()
                         print()
                         lista_pelis.buscar_anio(entrada)
                         print("=====================================================================\n")
                     elif o == "3":
-                        print('\n======================== LISTA POR GENERO =========================')
+                        print('\n======================== LISTA POR GENERO ==========================')
                         genero = input("Ingrese el genero : ").strip()
                         lista_pelis.buscar_genero(genero)
                         print("=====================================================================\n")
