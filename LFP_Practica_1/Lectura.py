@@ -5,7 +5,7 @@ class Lectura:
 
     def  cargaArchivo(self,ruta):
         try: #manejar excepciones
-            with open(ruta, "r") as Archivo: #abre el archivo modo lectura
+            with open(ruta, mode="r",encoding='utf-8') as Archivo: #abre el archivo modo lectura
                 lista_datos = Archivo.readlines() #lee todas las líneas del archivo y las almacena en la variable 
                 return self.procesar_Archivo(lista_datos) #procesar las líneas del archivo leído y retornar una Lista_enlazada de películas.
 
