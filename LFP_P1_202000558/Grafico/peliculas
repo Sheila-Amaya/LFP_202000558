@@ -1,0 +1,207 @@
+digraph {
+	node [shape=rectangle]
+	"Capitán América: El primer vengador" [label="Capitán América: El primer vengador
+[Accion,2011]"]
+	"Capitana Marvel" [label="Capitana Marvel
+[Accion,2019]"]
+	"Iron Man" [label="Iron Man
+[Accion,2008]"]
+	"Iron Man 2" [label="Iron Man 2
+[Accion,2011]"]
+	Thor [label="Thor
+[Accion,2011]"]
+	"Los Vengadores" [label="Los Vengadores
+[Accion,2012]"]
+	"Thor: El mundo oscuro" [label="Thor: El mundo oscuro
+[Accion,2013]"]
+	"Iron Man 3" [label="Iron Man 3
+[Accion,2013]"]
+	"Capitán América: El Soldado de Invierno" [label="Capitán América: El Soldado de Invierno
+[Accion,2014]"]
+	"El regalo" [label="El regalo
+[Drama,2015]"]
+	"El regreso de Ben" [label="El regreso de Ben
+[Drama,2017]"]
+	"La noche del cazador" [label="La noche del cazador
+[Drama,1955]"]
+	"La Pasión de Cristo" [label="La Pasión de Cristo
+[Drama,2004]"]
+	Argo [label="Argo
+[Drama,2012]"]
+	"Guardianes de la Galaxia" [label="Guardianes de la Galaxia
+[Accion,2014]"]
+	"Avengers: Age of Ultron" [label="Avengers: Age of Ultron
+[Accion,2015]"]
+	"Ant-Man" [label="Ant-Man
+[Accion,2015]"]
+	"Capitán América: Civil War" [label="Capitán América: Civil War
+[Accion,2016]"]
+	"Guardianes de la Galaxia Vol. 2" [label="Guardianes de la Galaxia Vol. 2
+[Accion,2017]"]
+	"Spider-Man: Homecoming" [label="Spider-Man: Homecoming
+[Accion,2017]"]
+	"Thor Ragnarok" [label="Thor Ragnarok
+[Accion,2017]"]
+	"Pantera Negra" [label="Pantera Negra
+[Accion,2018]"]
+	"Avengers: Infinity War" [label="Avengers: Infinity War
+[Accion,2018]"]
+	"Ant-Man and the Wasp" [label="Ant-Man and the Wasp
+[Accion,2018]"]
+	"Avengers: Endgame" [label="Avengers: Endgame
+[Accion,2019]"]
+	"Spider-Man: Lejos de casa" [label="Spider-Man: Lejos de casa
+[Accion,2019]"]
+	"Black Widow" [label="Black Widow
+[Accion,2020]"]
+	"Shang-Chi y la leyenda de los Diez Anillos" [label="Shang-Chi y la leyenda de los Diez Anillos
+[Accion,2021]"]
+	"Spider-Man: No Way Home" [label="Spider-Man: No Way Home
+[Accion,2021]"]
+	"Doctor Strange en el Multiverso de la Locura" [label="Doctor Strange en el Multiverso de la Locura
+[Accion,2021]"]
+	"Thor: Love and Thunder" [label="Thor: Love and Thunder
+[Accion,2022]"]
+	"Black Panther: Wakanda Forever" [label="Black Panther: Wakanda Forever
+[Accion,2022]"]
+	"Capitán América":" El primer vengador" -> "Chris Evans"
+	"Capitán América":" El primer vengador" -> "Tommy Lee Jones"
+	"Capitán América":" El primer vengador" -> "Hayley Atwell"
+	"Capitán América":" El primer vengador" -> "Sebastian Stan"
+	"Capitán América":" El primer vengador" -> "Stan Lee"
+	"Capitana Marvel" -> "Brie Larson"
+	"Capitana Marvel" -> "Samuel L. Jackson"
+	"Capitana Marvel" -> "Ben Mendelsohn"
+	"Capitana Marvel" -> "Jude Law"
+	"Iron Man" -> "Robert Downey Jr."
+	"Iron Man" -> "Jon Favreau"
+	"Iron Man" -> "Gwyneth Paltrow"
+	"Iron Man" -> "Stan Lee"
+	"Iron Man 2" -> "Robert Downey Jr."
+	"Iron Man 2" -> "Jon Favreau"
+	"Iron Man 2" -> "Gwyneth Paltrow"
+	"Iron Man 2" -> "Stan Lee"
+	"Iron Man 2" -> "Scarlett Johansson"
+	Thor -> "Chris Hemsworth"
+	Thor -> "Natalie Portman"
+	Thor -> "Tom Hiddleston"
+	Thor -> "Idris Elba"
+	"Los Vengadores" -> "Scarlett Johansson"
+	"Los Vengadores" -> "Gwyneth Paltrow"
+	"Los Vengadores" -> "Robert Downey Jr."
+	"Los Vengadores" -> "Jeremy Renner"
+	"Los Vengadores" -> "Chris Evans"
+	"Los Vengadores" -> "Chris Hemsworth"
+	"Los Vengadores" -> "Mark Ruffalo"
+	"Los Vengadores" -> "Samuel L. Jackson"
+	Thor:" El mundo oscuro" -> "Chris Hemsworth"
+	Thor:" El mundo oscuro" -> "Natalie Portman"
+	Thor:" El mundo oscuro" -> "Tom Hiddleston"
+	Thor:" El mundo oscuro" -> "Anthony Hopkins"
+	Thor:" El mundo oscuro" -> "Idris Elba"
+	Thor:" El mundo oscuro" -> "Stellan Skarsgård"
+	Thor:" El mundo oscuro" -> "Christopher Eccleston"
+	Thor:" El mundo oscuro" -> "Adrianne Palicki"
+	"Iron Man 3" -> "Robert Downey Jr."
+	"Iron Man 3" -> "Jon Favreau"
+	"Iron Man 3" -> "Gwyneth Paltrow"
+	"Iron Man 3" -> "Stan Lee"
+	"Capitán América":" El Soldado de Invierno" -> "Chris Evans"
+	"Capitán América":" El Soldado de Invierno" -> "Scarlett Johansson"
+	"Capitán América":" El Soldado de Invierno" -> "Sebastian Stan"
+	"Capitán América":" El Soldado de Invierno" -> "Anthony Mackie"
+	"Capitán América":" El Soldado de Invierno" -> "Samuel L. Jackson"
+	"Capitán América":" El Soldado de Invierno" -> "Stan Lee"
+	"El regalo" -> "Jason Bateman"
+	"El regalo" -> "Rebecca Hall"
+	"El regalo" -> "Joel Edgerton"
+	"El regalo" -> "Allison Tolman"
+	"El regreso de Ben" -> "No deberia"
+	"El regreso de Ben" -> Tener
+	"El regreso de Ben" -> Actores
+	"El regreso de Ben" -> "Esta es la Buena ":3
+	"La noche del cazador" -> "Robert Mitchum"
+	"La noche del cazador" -> "Shelley Winters"
+	"La noche del cazador" -> "Lillian Gish"
+	"La noche del cazador" -> "Peter Graves"
+	"La Pasión de Cristo" -> "Jim Caviezel"
+	"La Pasión de Cristo" -> "Maia Morgenstern"
+	"La Pasión de Cristo" -> "Monica Bellucci"
+	"La Pasión de Cristo" -> "Christo Jivkov"
+	Argo -> "Ben Affleck"
+	Argo -> "Bryan Cranston"
+	Argo -> "Alan Arkin"
+	Argo -> "John Goodman"
+	"Guardianes de la Galaxia" -> "Chris Pratt"
+	"Guardianes de la Galaxia" -> "Zoe Saldana"
+	"Guardianes de la Galaxia" -> "Dave Bautista"
+	"Guardianes de la Galaxia" -> "Vin Diesel"
+	Avengers:" Age of Ultron" -> "Robert Downey Jr."
+	Avengers:" Age of Ultron" -> "Chris Evans"
+	Avengers:" Age of Ultron" -> "Mark Ruffalo"
+	Avengers:" Age of Ultron" -> "Chris Hemsworth"
+	"Ant-Man" -> "Paul Rudd"
+	"Ant-Man" -> "Michael Douglas"
+	"Ant-Man" -> "Evangeline Lilly"
+	"Ant-Man" -> "Corey Stoll"
+	"Capitán América":" Civil War" -> "Chris Evans"
+	"Capitán América":" Civil War" -> "Robert Downey Jr."
+	"Capitán América":" Civil War" -> "Scarlett Johansson"
+	"Capitán América":" Civil War" -> "Sebastian Stan"
+	"Guardianes de la Galaxia Vol. 2" -> "Chris Pratt"
+	"Guardianes de la Galaxia Vol. 2" -> "Zoe Saldana"
+	"Guardianes de la Galaxia Vol. 2" -> "Dave Bautista"
+	"Guardianes de la Galaxia Vol. 2" -> "Vin Diesel"
+	"Spider-Man":" Homecoming" -> "Tom Holland"
+	"Spider-Man":" Homecoming" -> "Michael Keaton"
+	"Spider-Man":" Homecoming" -> "Robert Downey Jr."
+	"Spider-Man":" Homecoming" -> "Marisa Tomei"
+	"Thor Ragnarok" -> "Chris Hemsworth"
+	"Thor Ragnarok" -> "Tom Hiddleston"
+	"Thor Ragnarok" -> "Cate Blanchett"
+	"Thor Ragnarok" -> "Idris Elba"
+	"Pantera Negra" -> "Chadwick Boseman"
+	"Pantera Negra" -> "Michael B. Jordan"
+	"Pantera Negra" -> "Lupita Nyong'o"
+	"Pantera Negra" -> "Danai Gurira"
+	Avengers:" Infinity War" -> "Robert Downey Jr."
+	Avengers:" Infinity War" -> "Chris Hemsworth"
+	Avengers:" Infinity War" -> "Mark Ruffalo"
+	Avengers:" Infinity War" -> "Chris Evans"
+	"Ant-Man and the Wasp" -> "Paul Rudd"
+	"Ant-Man and the Wasp" -> "Evangeline Lilly"
+	"Ant-Man and the Wasp" -> "Michael Peña"
+	"Ant-Man and the Wasp" -> "Walton Goggins"
+	Avengers:" Endgame" -> "Robert Downey Jr."
+	Avengers:" Endgame" -> "Chris Evans"
+	Avengers:" Endgame" -> "Mark Ruffalo"
+	Avengers:" Endgame" -> "Chris Hemsworth"
+	"Spider-Man":" Lejos de casa" -> "Tom Holland"
+	"Spider-Man":" Lejos de casa" -> "Samuel L. Jackson"
+	"Spider-Man":" Lejos de casa" -> Zendaya
+	"Spider-Man":" Lejos de casa" -> "Cobie Smulders"
+	"Black Widow" -> "Scarlett Johansson"
+	"Black Widow" -> "Florence Pugh"
+	"Black Widow" -> "David Harbour"
+	"Black Widow" -> "Rachel Weisz"
+	"Shang-Chi y la leyenda de los Diez Anillos" -> "Simu Liu"
+	"Shang-Chi y la leyenda de los Diez Anillos" -> Awkwafina
+	"Shang-Chi y la leyenda de los Diez Anillos" -> "Tony Leung"
+	"Shang-Chi y la leyenda de los Diez Anillos" -> "Michelle Yeoh"
+	"Spider-Man":" No Way Home" -> "Tom Holland"
+	"Spider-Man":" No Way Home" -> Zendaya
+	"Spider-Man":" No Way Home" -> "Jacob Batalon"
+	"Spider-Man":" No Way Home" -> "Marisa Tomei"
+	"Doctor Strange en el Multiverso de la Locura" -> "Benedict Cumberbatch"
+	"Doctor Strange en el Multiverso de la Locura" -> "Elizabeth Olsen"
+	"Doctor Strange en el Multiverso de la Locura" -> "Benedict Wong"
+	"Doctor Strange en el Multiverso de la Locura" -> "Chiwetel Ejiofor"
+	Thor:" Love and Thunder" -> "Chris Hemsworth"
+	Thor:" Love and Thunder" -> "Natalie Portman"
+	Thor:" Love and Thunder" -> "Tessa Thompson"
+	Thor:" Love and Thunder" -> "Christian Bale"
+	"Black Panther":" Wakanda Forever" -> "Chadwick Boseman"
+	"Black Panther":" Wakanda Forever" -> "Lupita Nyong'o"
+	"Black Panther":" Wakanda Forever" -> "Danai Gurira"
+	"Black Panther":" Wakanda Forever" -> "Letitia Wright"
+}
