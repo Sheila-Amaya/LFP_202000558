@@ -5,24 +5,26 @@
         "Valor2":5.32
     },
     {
-        "Operacion":"Resta"
+    "Operacion":"Resta"
         "Valor1":4.5
-        "Valor2": [
+        "Valor2":[
             "Operacion":"Potencia"
             "Valor1":10
             "Valor2":3
     ]},
     {
-        "Operacion":"Suma"
+    "Operacion":"Suma"
         "Valor1":[
-            "Operacion":"Seno"
-            "Valor1":90
-        ]
+        "Operacion":"Seno"
+        "Valor1":90
+    ]
         "Valor2":5.32
     }
-    "Texto":"Realizacion de Operaciones"
+    "Texto":"RealizaciondeOperaciones"
     "Color-Fondo-Nodo":"Amarillo"
     "Color-Fuente-Nodo":"Rojo"
     "Forma-Nodo":"Circulo"
 }
+
+
 
