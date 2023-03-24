@@ -5,6 +5,9 @@ from analizador import *
 from tkinter.filedialog import asksaveasfilename
 import os
 from analizador import instruccion
+import json
+
+lista_errores = []
 
 class Funciones():
     
@@ -54,7 +57,7 @@ class Funciones():
         opciones_menu.add_command(label="Guardar",command=lambda: self.guardar(cuadro_texto))
         opciones_menu.add_command(label="Guardar como",command=lambda: self.guardar_como(cuadro_texto))
         opciones_menu.add_command(label="Analizar", command=lambda: self.analizar(cuadro_texto.get("1.0", END)))
-        opciones_menu.add_command(label="Error",command=lambda: self.error(cuadro_texto.get("1.0", END)))
+        opciones_menu.add_command(label="Error", command=lambda: self.escribir_error())
         opciones_menu.add_separator()
         opciones_menu.add_command(label="Regresar", command=lambda: self.mostrar_principal(principal, ventana_secundaria))
     
@@ -70,7 +73,7 @@ class Funciones():
         # Agregar el menú de ayuda
         menubar.add_cascade(label="Ayuda", menu=ayuda_menu)
     
-        # Asignar el menubar a la ventana secundaria
+        # Asignar el menubar ala ventana secundaria
         ventana_secundaria.config(menu=menubar)
         
     
@@ -94,12 +97,36 @@ class Funciones():
             self.analizar()
 
     def analizar(self, contenido):
-        instruccion(contenido)
+        global lista_errores
+        lista_errores =instruccion(contenido)
         operar_R()
-        
-    def error(self):
-        pass
+        graficar(contenido)
 
+    def escribir_error(self):
+            global lista_errores
+            if lista_errores:
+                errores = []
+                i= 0
+                for i, error in enumerate(lista_errores):
+                    for e in error:
+                        errores.append({
+                            "No.": i,
+                            "Descripcion-Token": {
+                                "Lexema": e.lexema.strip('\"'),
+                                "Tipo": e.tipo,
+                                "Columna": e.columna,
+                                "Fila": e.linea
+                            }
+                        })
+                        i += 1
+                if errores:
+                    with open(r"C:\Users\amaya\OneDrive\Documents\GitHub\LFP_202000558\[LFP]Proyecto2_202000558\ERRORES\ERRORES_202000558.json", "w") as f:
+                        json.dump(errores, f, indent=4)
+                        print("Tabla de errores generada correctamente.")
+                else:
+                    print("No se encontraron errores.")
+            else:
+                print("No se encontraron errores.")
 
     def guardar(self, cuadro_texto):
         try:

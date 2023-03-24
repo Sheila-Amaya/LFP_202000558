@@ -3,9 +3,9 @@ from Instruccion.trigonometricas import *
 from abst.lexema import *
 from abst.num import *
 from errores import *
-import json
-import os
-
+from estilo import *
+#from graphviz import Digraph
+#import graphviz
 
 
 #palabras reservadas son los lexemas
@@ -44,19 +44,22 @@ global n_columna
 global instrucciones
 global lista_lexema
 global lista_errores
+global estilo 
 
 n_linea = 1
 n_columna = 1
 lista_lexema = []
 instrucciones = []
 lista_errores = []
-
+estilo = ""
 
 def instruccion(cadena):
     global n_linea
     global n_columna
     global lista_lexema
     global lista_errores
+    global estilo
+
     
     pos = 0
 
@@ -145,22 +148,68 @@ def instruccion(cadena):
 
         else:
             # si no es un caracter reconocido, es un error
-            mensaje = f"Error léxico: caracter no reconocido '{char}'"
-            e = Error(mensaje, n_linea, n_columna)
+            #mensaje = f"Error léxico: caracter no reconocido '{char}'"
+            e = Error(char,n_linea, n_columna)
             lista_errores.append(e)
             
             cadena = cadena[1:]
             puntero = 0
             n_columna += 1
-            
-    for lexema in lista_lexema:
-        print(lexema.get_valor())
-        
-    for error in lista_errores:
-        print(f"{error.mensaje} en línea {error.linea}, columna {error.columna}")
-        
-    return lista_lexema, lista_errores
+    #busca en lexema los valores indicados y si encuentra busca el siguiente y obtiene el valor
 
+    for lexema in lista_lexema:
+        siguiente_valor = None
+
+        for i, lexema in enumerate(lista_lexema):
+            if lexema.get_valor() == 'Texto':
+                if i < len(lista_lexema) - 1:
+                    siguiente_valor = lista_lexema[i + 1].get_valor()
+                    break
+
+    texto = siguiente_valor
+
+    for lexema in lista_lexema:
+        siguiente_valor = None
+
+        for i, lexema in enumerate(lista_lexema):
+            if lexema.get_valor() == 'Color-Fondo-Nodo':
+                if i < len(lista_lexema) - 1:
+                    siguiente_valor = lista_lexema[i + 1].get_valor()
+                    break
+
+    ColorN = siguiente_valor
+    
+    for lexema in lista_lexema:
+        siguiente_valor = None
+
+        for i, lexema in enumerate(lista_lexema):
+            if lexema.get_valor() == 'Color-Fuente-Nodo':
+                if i < len(lista_lexema) - 1:
+                    siguiente_valor = lista_lexema[i + 1].get_valor()
+                    break
+
+    ColorF = siguiente_valor
+    
+    for lexema in lista_lexema:
+        siguiente_valor = None
+
+        for i, lexema in enumerate(lista_lexema):
+            if lexema.get_valor() == 'Forma-Nodo':
+                if i < len(lista_lexema) - 1:
+                    siguiente_valor = lista_lexema[i + 1].get_valor()
+                    break
+
+    Forma = siguiente_valor
+    
+    estilo = Estilo(texto,ColorN,ColorF,Forma) #variable para almacenar los datos para el estilo del arbol de operaciones
+    #print(estilo.texto)
+    #print(estilo.color_nodo)
+    #print(estilo.color_fuente)
+    #print(estilo.forma_nodo)
+
+    #for error in lista_errores:
+        #print(f"{error.mensaje} en línea {error.linea}, columna {error.columna}")
+    return lista_lexema, lista_errores
 
 
 def armar_Lexema(cadena):
@@ -197,13 +246,14 @@ def armar_num(cadena):
             num += char
     return None, None
 
+
 def operar():
     global lista_lexema
     global instrucciones
     operacion = ''
     n1 = ''
     n2 = ''
-    
+
     while lista_lexema:
         lexema = lista_lexema.pop(0)
         if lexema.operar(None) == 'Operacion':
@@ -216,8 +266,7 @@ def operar():
             n2 = lista_lexema.pop(0)
             if n2.operar(None) == '[':
                 n2 = operar()
-            
-        
+
         if operacion and n1 and n2:
             return Aritmetica(n1,n2,operacion, f'Inicio: {operacion.getFila()}:{operacion.getColumna()}', f'Fin: {n2.getFila()}:{n2.getColumna}')
         elif operacion and n1 and operacion.operar(None) == ('Seno' or 'Coseno' or 'Tangente'):
@@ -232,8 +281,54 @@ def operar_R():
             instrucciones.append(operacion)
         else:
             break
-    for instruccion in instrucciones:
-        print(instruccion.operar(None))
     return instrucciones
 
 
+def graficar(cadena):
+    global estilo
+    
+    instruccion(cadena)
+    respuestas = operar_R()
+
+    operacion_str = ""
+    for respuesta in respuestas:
+        resultado_izquierdo = respuesta.L.operar(None)
+        resultado_derecho = respuesta.R.operar(None)
+        resultado = respuesta.operar(None)
+        operacion_str += f"{resultado_izquierdo} {respuesta.tipo.lexema} {resultado_derecho} = {resultado}\n"
+    
+    print(operacion_str)
+
+cadena = '''
+{
+    {
+        "Operacion":"Suma"
+        "Valor1":4.5
+        "Valor2":5.32
+    },
+    {
+    "Operacion":"Resta"
+        "Valor1":4.5
+        "Valor2":[
+            "Operacion":"Potencia"
+            "Valor1":10
+            "Valor2":3
+    ]},
+    {
+    "Operacion":"Suma"
+        "Valor1":[
+        "Operacion":"Seno"
+        "Valor1":90
+    ]
+        "Valor2":5.32
+    }
+    "Texto":"RealizaciondeOperaciones"
+    "Color-Fondo-Nodo":"Amarillo"
+    "Color-Fuente-Nodo":"Rojo"
+    "Forma-Nodo":"Cuadrado"
+}
+
+
+'''
+
+graficar(cadena)

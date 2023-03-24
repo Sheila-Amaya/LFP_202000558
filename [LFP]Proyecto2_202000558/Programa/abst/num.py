@@ -16,3 +16,6 @@ class Num(Expresion):
     
     def get_valor(self):
         return self.valor
+    
+    def __str__(self):
+        return str(self.valor)

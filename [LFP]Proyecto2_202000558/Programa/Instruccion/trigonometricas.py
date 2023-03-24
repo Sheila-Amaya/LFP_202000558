@@ -6,6 +6,7 @@ class Trigonometrica(Expresion):
     def __init__(self, L, tipo, fila, columna):
         self.L = L
         self.tipo = tipo
+        self.valor = ""
         super().__init__(fila, columna)
         
         
@@ -16,11 +17,17 @@ class Trigonometrica(Expresion):
             Lvalue = self.L.operar(arbol)
             
         if self.tipo.operar(arbol) == 'Seno':
-            return sin(Lvalue)
+            resultado = sin(Lvalue)
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Coseno':
-            return cos(Lvalue)
+            resultado = cos(Lvalue)
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Tangente':
-            return tan(Lvalue)
+            resultado = tan(Lvalue)
+            self.valor = resultado
+            return resultado
         else:
             return 0
         

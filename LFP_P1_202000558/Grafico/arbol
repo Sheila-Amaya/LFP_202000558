@@ -1,0 +1,15 @@
+// Árbol de operaciones
+digraph {
+	<Instruccion.aritmeticas.Aritmetica object at 0x000001E99FF3E680> [label=3.0]
+	<abst.num.Num object at 0x000001E99FF3C3A0> -> <Instruccion.aritmeticas.Aritmetica object at 0x000001E99FF3E680>
+	<abst.num.Num object at 0x000001E99FF3D570> -> <Instruccion.aritmeticas.Aritmetica object at 0x000001E99FF3E680>
+	<Instruccion.aritmeticas.Aritmetica object at 0x000001E99FEA7580> [label=64.0]
+	<Instruccion.aritmeticas.Aritmetica object at 0x000001E99FEA6D40> -> <Instruccion.aritmeticas.Aritmetica object at 0x000001E99FEA7580>
+	<Instruccion.aritmeticas.Aritmetica object at 0x000001E99FEA7010> -> <Instruccion.aritmeticas.Aritmetica object at 0x000001E99FEA7580>
+	<Instruccion.aritmeticas.Aritmetica object at 0x000001E99FEA7D90> [label=6.213996663600558]
+	<Instruccion.trigonometricas.Trigonometrica object at 0x000001E99FEA7850> -> <Instruccion.aritmeticas.Aritmetica object at 0x000001E99FEA7D90>
+	<abst.num.Num object at 0x000001E99FEA6CB0> -> <Instruccion.aritmeticas.Aritmetica object at 0x000001E99FEA7D90>
+	<Instruccion.aritmeticas.Aritmetica object at 0x000001E9A0E57C40> [label=100.0]
+	<Instruccion.aritmeticas.Aritmetica object at 0x000001E9A0E576D0> -> <Instruccion.aritmeticas.Aritmetica object at 0x000001E9A0E57C40>
+	<Instruccion.aritmeticas.Aritmetica object at 0x000001E9A0E57E50> -> <Instruccion.aritmeticas.Aritmetica object at 0x000001E9A0E57C40>
+}

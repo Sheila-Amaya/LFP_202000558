@@ -1,0 +1,6 @@
+digraph G {
+    node [shape = ellipse;];
+    edge [arrowhead = vee;];
+    Operacion -> Valor1;
+    Operacion -> Valor2;
+}

@@ -6,6 +6,7 @@ class Aritmetica(Expresion):
         self.L = L
         self.R = R
         self.tipo = tipo
+        self.valor = ""
         super().__init__(fila, columna)
         
         
@@ -19,21 +20,37 @@ class Aritmetica(Expresion):
             Rvalue = self.R.operar(arbol)
 
         if self.tipo.operar(arbol) == 'Suma':
-            return Lvalue + Rvalue
+            resultado = Lvalue + Rvalue
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Resta':
-            return Lvalue - Rvalue
+            resultado = Lvalue - Rvalue
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Multiplicacion':
-            return Lvalue * Rvalue
+            resultado = Lvalue * Rvalue
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Division':
-            return Lvalue / Rvalue
+            resultado =  Lvalue / Rvalue
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Modulo':
-            return Lvalue % Rvalue
+            resultado =  Lvalue % Rvalue
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Potencia':
-            return Lvalue ** Rvalue
+            resultado =  Lvalue ** Rvalue
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Raiz':
-            return Lvalue ** (1/Rvalue)
+            resultado =  Lvalue ** (1/Rvalue)
+            self.valor = resultado
+            return resultado
         elif self.tipo.operar(arbol) == 'Inverso':
-            return 1/Lvalue
+            resultado =  1/Lvalue
+            self.valor = resultado
+            return resultado
         else:
             return 0
         
