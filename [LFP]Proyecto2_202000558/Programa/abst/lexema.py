@@ -9,7 +9,7 @@ class Lexema(Expresion):
         return self.lexema
     
     def getFila(self):
-        return super().getFila()
+        return super().getFila() #llama al constructor de la clase base y pasa los valores de f y c
     
     def getColumna(self):
         return super().getColumna()

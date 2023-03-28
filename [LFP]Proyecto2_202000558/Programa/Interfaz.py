@@ -6,6 +6,7 @@ from tkinter.filedialog import asksaveasfilename
 import os
 from analizador import instruccion
 import json
+from tkinter import messagebox
 
 lista_errores = []
 
@@ -92,41 +93,50 @@ class Funciones():
         except FileNotFoundError:
             messagebox.showerror("Error", "Archivo no encontrado o no existe")
         except:
-            messagebox.showerror("Error", "Error al abrir archivo. Asegúrese de que el archivo es de tipo JSON.")
-
+            messagebox.showerror("Error", "Error al abrir archivo")
             self.analizar()
 
     def analizar(self, contenido):
         global lista_errores
         lista_errores =instruccion(contenido)
         operar_R()
-        graficar(contenido)
+        mensaje1 = graficar(contenido)
+        
+        root = Tk()
+        root.withdraw()
+        messagebox.showinfo(title="Mensaje", message=mensaje1)
 
     def escribir_error(self):
-            global lista_errores
-            if lista_errores:
-                errores = []
-                i= 0
-                for i, error in enumerate(lista_errores):
-                    for e in error:
-                        errores.append({
-                            "No.": i,
-                            "Descripcion-Token": {
-                                "Lexema": e.lexema.strip('\"'),
-                                "Tipo": e.tipo,
-                                "Columna": e.columna,
-                                "Fila": e.linea
-                            }
-                        })
-                        i += 1
-                if errores:
-                    with open(r"C:\Users\amaya\OneDrive\Documents\GitHub\LFP_202000558\[LFP]Proyecto2_202000558\ERRORES\ERRORES_202000558.json", "w") as f:
-                        json.dump(errores, f, indent=4)
-                        print("Tabla de errores generada correctamente.")
-                else:
-                    print("No se encontraron errores.")
+        global lista_errores
+        if lista_errores:
+            errores = []
+            i= 0
+            for i, error in enumerate(lista_errores):
+                for e in error:
+                    errores.append({
+                        "No.": i,
+                        "Descripcion-Token": {
+                            "Lexema": e.lexema.strip('\"'),
+                            "Tipo": e.tipo,
+                            "Columna": e.columna,
+                            "Fila": e.linea
+                        }
+                    })
+                    i += 1
+            if errores:
+                mensaje2 = "Tabla de errores generada correctamente."
+                with open(r"C:\Users\amaya\OneDrive\Documents\GitHub\LFP_202000558\[LFP]Proyecto2_202000558\ERRORES\ERRORES_202000558.json", "w") as f:
+                    json.dump(errores, f, indent=4)
+                    root = Tk()
+                    root.withdraw()
+                    messagebox.showinfo(title="Mensaje", message=mensaje2)
+                    root.mainloop()
             else:
-                print("No se encontraron errores.")
+                mensaje1 ="No se encontraron errores."
+                root = Tk()
+                root.withdraw()
+                messagebox.showinfo(title="Mensaje", message=mensaje1)
+                root.mainloop()
 
     def guardar(self, cuadro_texto):
         try:

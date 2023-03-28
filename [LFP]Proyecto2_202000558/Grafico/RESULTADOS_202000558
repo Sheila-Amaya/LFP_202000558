@@ -1,0 +1,120 @@
+digraph {
+node_0 [label="Resta\n3.0"];
+node_0_izq [label="6.5"];
+node_0 -> node_0_izq;
+node_0_der [label="3.5"];
+node_0 -> node_0_der;
+
+node_1 [label="Multiplicacion\n64.0"];
+node_1_izq [label="Potencia\n8.0"];
+node_1_izq_izq [label="2"];
+node_1_izq -> node_1_izq_izq;
+node_1_izq_der [label="Raiz\n3.0"];
+node_1_izq_der_izq [label="9"];
+node_1_izq_der -> node_1_izq_der_izq;
+node_1_izq_der_der [label="2"];
+node_1_izq_der -> node_1_izq_der_der;
+node_1_izq -> node_1_izq_der;
+node_1 -> node_1_izq;
+node_1_der [label="Potencia\n8.0"];
+node_1_der_izq [label="2"];
+node_1_der -> node_1_der_izq;
+node_1_der_der [label="Raiz\n3.0"];
+node_1_der_der_izq [label="9"];
+node_1_der_der -> node_1_der_der_izq;
+node_1_der_der_der [label="2"];
+node_1_der_der -> node_1_der_der_der;
+node_1_der -> node_1_der_der;
+node_1 -> node_1_der;
+
+node_2 [label="Suma\n6.213996663600558"];
+node_2_izq [label="Seno
+ 0.8939966636005579"];
+node_2_izq_izq [label="90"];
+node_2_izq -> node_2_izq_izq;
+node_2 -> node_2_izq;
+node_2_der [label="5.32"];
+node_2 -> node_2_der;
+
+node_3 [label="Resta\n100.0"];
+node_3_izq [label="Division\n250.0"];
+node_3_izq_izq [label="500"];
+node_3_izq -> node_3_izq_izq;
+node_3_izq_der [label="Division\n2.0"];
+node_3_izq_der_izq [label="10"];
+node_3_izq_der -> node_3_izq_der_izq;
+node_3_izq_der_der [label="5"];
+node_3_izq_der -> node_3_izq_der_der;
+node_3_izq -> node_3_izq_der;
+node_3 -> node_3_izq;
+node_3_der [label="Multiplicacion\n150"];
+node_3_der_izq [label="10"];
+node_3_der -> node_3_der_izq;
+node_3_der_der [label="Multiplicacion\n15"];
+node_3_der_der_izq [label="3"];
+node_3_der_der -> node_3_der_der_izq;
+node_3_der_der_der [label="5"];
+node_3_der_der -> node_3_der_der_der;
+node_3_der -> node_3_der_der;
+node_3 -> node_3_der;
+
+node_4 [label="Resta\n3.0"];
+node_4_izq [label="6.5"];
+node_4 -> node_4_izq;
+node_4_der [label="3.5"];
+node_4 -> node_4_der;
+
+node_5 [label="Multiplicacion\n64.0"];
+node_5_izq [label="Potencia\n8.0"];
+node_5_izq_izq [label="2"];
+node_5_izq -> node_5_izq_izq;
+node_5_izq_der [label="Raiz\n3.0"];
+node_5_izq_der_izq [label="9"];
+node_5_izq_der -> node_5_izq_der_izq;
+node_5_izq_der_der [label="2"];
+node_5_izq_der -> node_5_izq_der_der;
+node_5_izq -> node_5_izq_der;
+node_5 -> node_5_izq;
+node_5_der [label="Potencia\n8.0"];
+node_5_der_izq [label="2"];
+node_5_der -> node_5_der_izq;
+node_5_der_der [label="Raiz\n3.0"];
+node_5_der_der_izq [label="9"];
+node_5_der_der -> node_5_der_der_izq;
+node_5_der_der_der [label="2"];
+node_5_der_der -> node_5_der_der_der;
+node_5_der -> node_5_der_der;
+node_5 -> node_5_der;
+
+node_6 [label="Suma\n6.213996663600558"];
+node_6_izq [label="Seno
+ 0.8939966636005579"];
+node_6_izq_izq [label="90"];
+node_6_izq -> node_6_izq_izq;
+node_6 -> node_6_izq;
+node_6_der [label="5.32"];
+node_6 -> node_6_der;
+
+node_7 [label="Resta\n100.0"];
+node_7_izq [label="Division\n250.0"];
+node_7_izq_izq [label="500"];
+node_7_izq -> node_7_izq_izq;
+node_7_izq_der [label="Division\n2.0"];
+node_7_izq_der_izq [label="10"];
+node_7_izq_der -> node_7_izq_der_izq;
+node_7_izq_der_der [label="5"];
+node_7_izq_der -> node_7_izq_der_der;
+node_7_izq -> node_7_izq_der;
+node_7 -> node_7_izq;
+node_7_der [label="Multiplicacion\n150"];
+node_7_der_izq [label="10"];
+node_7_der -> node_7_der_izq;
+node_7_der_der [label="Multiplicacion\n15"];
+node_7_der_der_izq [label="3"];
+node_7_der_der -> node_7_der_der_izq;
+node_7_der_der_der [label="5"];
+node_7_der_der -> node_7_der_der_der;
+node_7_der -> node_7_der_der;
+node_7 -> node_7_der;
+
+}

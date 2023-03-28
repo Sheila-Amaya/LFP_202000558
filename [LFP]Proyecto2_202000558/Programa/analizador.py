@@ -4,8 +4,7 @@ from abst.lexema import *
 from abst.num import *
 from errores import *
 from estilo import *
-#from graphviz import Digraph
-#import graphviz
+from graphviz import Source
 
 
 #palabras reservadas son los lexemas
@@ -283,52 +282,54 @@ def operar_R():
             break
     return instrucciones
 
+def traducir(palabra):
+    diccionario = {
+        "amarillo": "yellow",
+        "rojo": "red",
+        "verde": "green",
+        "azul": "blue",
+        "morado": "purple",
+        "naranja": "orange",
+        "blanco": "white",
+        "negro": "black",
+        "circulo": "circle",
+        "cuadrado": "square",
+        "rectangulo": "rectangle",
+        "ovalo": "oval",
+        "rombo": "diamond",
+        "hexagono": "hexagon",
+        "heptagono": "heptagon",
+        "octagono": "octagon",
+        "triangulo": "triangle",
+        "pentagono": "pentagon"
+    }
+    return diccionario.get(palabra.lower(), palabra)
 
 def graficar(cadena):
     global estilo
+    #print(estilo.texto)
+    #print(estilo.color_nodo)
+    #print(estilo.color_fuente)
+    #print(estilo.forma_nodo)
     
     instruccion(cadena)
     respuestas = operar_R()
 
     operacion_str = ""
-    for respuesta in respuestas:
+    graphviz_code = "digraph {\n"
+    for i, respuesta in enumerate(respuestas):
         resultado_izquierdo = respuesta.L.operar(None)
         resultado_derecho = respuesta.R.operar(None)
         resultado = respuesta.operar(None)
-        operacion_str += f"{resultado_izquierdo} {respuesta.tipo.lexema} {resultado_derecho} = {resultado}\n"
+        operacion_str += f"{resultado_izquierdo} {respuesta.tipo.lexema} {resultado_derecho} {resultado}\n"
+        graphviz_code += f"{respuesta.graphviz(i)}\n"
+    graphviz_code += "}"
     
-    print(operacion_str)
-
-cadena = '''
-{
-    {
-        "Operacion":"Suma"
-        "Valor1":4.5
-        "Valor2":5.32
-    },
-    {
-    "Operacion":"Resta"
-        "Valor1":4.5
-        "Valor2":[
-            "Operacion":"Potencia"
-            "Valor1":10
-            "Valor2":3
-    ]},
-    {
-    "Operacion":"Suma"
-        "Valor1":[
-        "Operacion":"Seno"
-        "Valor1":90
-    ]
-        "Valor2":5.32
-    }
-    "Texto":"RealizaciondeOperaciones"
-    "Color-Fondo-Nodo":"Amarillo"
-    "Color-Fuente-Nodo":"Rojo"
-    "Forma-Nodo":"Cuadrado"
-}
-
-
-'''
-
-graficar(cadena)
+    arbolito = graphviz_code
+    #print(arbolito)
+    try:
+        src = Source(arbolito)
+        src.render(filename='RESULTADOS_202000558', directory=r'C:\Users\amaya\OneDrive\Documents\GitHub\LFP_202000558\[LFP]Proyecto2_202000558\Grafico')
+        return "Resultado Generado con exito!"
+    except Exception:
+            return f"Error al generar el archivo de salida"
