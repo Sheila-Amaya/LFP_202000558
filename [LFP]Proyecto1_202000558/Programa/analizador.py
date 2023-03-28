@@ -280,6 +280,8 @@ def operar_R():
             instrucciones.append(operacion)
         else:
             break
+    for instruccion in instrucciones:
+        print(instruccion.operar(None))
     return instrucciones
 
 def traducir(palabra):
@@ -301,35 +303,34 @@ def traducir(palabra):
         "heptagono": "heptagon",
         "octagono": "octagon",
         "triangulo": "triangle",
-        "pentagono": "pentagon"
+        
     }
     return diccionario.get(palabra.lower(), palabra)
 
 def graficar(cadena):
     global estilo
-    #print(estilo.texto)
-    #print(estilo.color_nodo)
-    #print(estilo.color_fuente)
-    #print(estilo.forma_nodo)
-    
-    instruccion(cadena)
     respuestas = operar_R()
 
     operacion_str = ""
     graphviz_code = "digraph {\n"
     for i, respuesta in enumerate(respuestas):
-        resultado_izquierdo = respuesta.L.operar(None)
-        resultado_derecho = respuesta.R.operar(None)
+        if isinstance(respuesta, Trigonometrica):
+            resultado_izquierdo = respuesta.L.operar(None)
+            resultado_derecho = resultado_izquierdo
+        else:
+            resultado_izquierdo = respuesta.L.operar(None)
+            resultado_derecho = respuesta.R.operar(None)
         resultado = respuesta.operar(None)
         operacion_str += f"{resultado_izquierdo} {respuesta.tipo.lexema} {resultado_derecho} {resultado}\n"
         graphviz_code += f"{respuesta.graphviz(i)}\n"
     graphviz_code += "}"
     
     arbolito = graphviz_code
-    #print(arbolito)
+    
     try:
         src = Source(arbolito)
         src.render(filename='RESULTADOS_202000558', directory=r'C:\Users\amaya\OneDrive\Documents\GitHub\LFP_202000558\[LFP]Proyecto1_202000558\Grafico')
-        return "Resultado Generado con exito!"
+        return "Resultado Generado con éxito!"
     except Exception:
-            return f"Error al generar el archivo de salida"
+        return f"Error al generar el archivo de salida"
+

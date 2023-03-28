@@ -9,7 +9,7 @@ class Trigonometrica(Expresion):
         self.valor = ""
         super().__init__(fila, columna)
         
-        
+
     def operar(self, arbol): #devuelve un resultado al aplicar una func. trig.
         Lvalue = ''
 
@@ -30,7 +30,7 @@ class Trigonometrica(Expresion):
             return resultado
         else:
             return 0
-        
+
     def getFila(self):
         return super().getFila()
     

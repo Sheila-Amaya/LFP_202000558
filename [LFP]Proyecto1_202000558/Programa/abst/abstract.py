@@ -16,3 +16,4 @@ class Expresion(ABC): #al hererdar ABC se convierte en una clase abstracta
     @abstractmethod
     def getColumna(self):
         return self.columna # devuelve el valor de la variable
+    
