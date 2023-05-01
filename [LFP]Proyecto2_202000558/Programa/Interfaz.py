@@ -143,13 +143,13 @@ class Funciones():
         tabla_frame.pack(expand=True)
 
         # Crear la tabla
-        tabla = ttk.Treeview(tabla_frame, columns=("Token", "Tipo", "Linea", "Columna"), show="headings")
+        tabla = ttk.Treeview(tabla_frame, columns=("LEXEMA", "TOKEN", "LINEA", "COLUMNA"), show="headings")
 
         # Configurar las columnas
-        tabla.heading("Token", text="Token")
-        tabla.heading("Tipo", text="Tipo")
-        tabla.heading("Linea", text="Linea")
-        tabla.heading("Columna", text="Columna")
+        tabla.heading("LEXEMA", text="LEXEMA")
+        tabla.heading("TOKEN", text="TOKEN")
+        tabla.heading("LINEA", text="LINEA")
+        tabla.heading("COLUMNA", text="COLUMNA")
 
         # Agregar los datos a la tabla
         analizador = AnalizadorLexico()
@@ -168,7 +168,7 @@ class Funciones():
             tabla.update()
             # Si la lista no está vacía, insertar los nuevos elementos en la tabla
             for token in tokens:
-                tabla.insert("", "end", values=(token.buffer, token.tipo, token.linea, token.columna))
+                tabla.insert("", "end", values=(token.escaner, token.tipo, token.linea, token.columna))
 
                 # Actualizar la tabla
                 tabla.update()
@@ -238,13 +238,14 @@ class Funciones():
         tabla_frame.pack(expand=True)
 
         # Crear la tabla
-        tabla = ttk.Treeview(tabla_frame, columns=("Token","Tipo", "Linea", "Columna"), show="headings")
+        tabla = ttk.Treeview(tabla_frame, columns=("No.","TOKEN","TIPO DE ERROR", "LINEA", "COLUMNA"), show="headings")
 
         # Configurar las columnas
-        tabla.heading("Token", text="Token")
-        tabla.heading("Tipo", text="Tipo")
-        tabla.heading("Linea", text="Linea")
-        tabla.heading("Columna", text="Columna")
+        tabla.heading("No.", text="No.")
+        tabla.heading("TOKEN", text="TOKEN")
+        tabla.heading("TIPO DE ERROR", text="TIPO DE ERROR")
+        tabla.heading("LINEA", text="LINEA")
+        tabla.heading("COLUMNA", text="COLUMNA")
 
         # Agregar los datos a la tabla
         analizador = AnalizadorLexico()
@@ -252,6 +253,7 @@ class Funciones():
         
         # Obtener la cantidad de elementos en la lista de tokens
         num_e = len(errores)
+        contador = 0
 
         # Verificar si la lista está vacía
         if num_e == 0:
@@ -263,7 +265,8 @@ class Funciones():
             tabla.update()
             # Si la lista no está vacía, insertar los nuevos elementos en la tabla
             for error in errores:
-                tabla.insert("", "end", values=(error.caracter,error.tipo, error.linea, error.columna))
+                contador += 1
+                tabla.insert("", "end", values=(contador,error.caracter,error.tipo, error.linea, error.columna))
 
                 # Actualizar la tabla
                 tabla.update()
@@ -297,6 +300,7 @@ class Funciones():
     def analizar(self, contenido):
         lexico = AnalizadorLexico()
         lexico.analizar(contenido)
+        lexico.generar(contenido)
 
 
     def guardar(self, cuadro_texto):
