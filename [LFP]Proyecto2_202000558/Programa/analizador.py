@@ -10,20 +10,22 @@ class AnalizadorLexico:
     errores = []
 
     def __init__(self):
-        self.linea = 1
-        self.columna = 1
-        self.estado = 0
-        self.escaner = ''
-
-    def agregarErrorLexico(self,caracter):
+        self.linea = 1  # Número de línea actual
+        self.columna = 1  # Número de columna actual
+        self.estado = 0  # Estado actual del autómata
+        self.escaner = ''  # almacena el lexema actual
+    
+    #agregar un error léxico a la lista de errores
+    def agregarErrorLexico(self,caracter): 
         global errores
         self.errores.append(ErrorLexico(caracter,self.linea,self.columna))
 
+    # agregar un token a la lista de tokens.
     def agregarToken(self,tipo,token):
         global tokens
         self.tokens.append(Token(tipo,token,self.linea,self.columna))
         self.i -= 1
-        
+
     def mostar_Tokens(self):
         global tokens
         for token in self.tokens:
@@ -39,7 +41,6 @@ class AnalizadorLexico:
             "|tipo |",error.tipo,
             "|Linea |",error.linea,
             "|Columna |",error.columna)
-
 
     def q0(self,caracter):
         if caracter == '-':
@@ -83,7 +84,7 @@ class AnalizadorLexico:
         elif caracter == '\n':
             self.linea += 1
             self.columna = 1
-        elif caracter == '#':
+        elif caracter == ' ':
             pass
         else:
             self.agregarErrorLexico(caracter)
@@ -97,7 +98,7 @@ class AnalizadorLexico:
             self.columna += 1
             self.escaner += caracter
         else:
-            self.agregarErrorLexico(self.escaner)
+            self.agregarError(self.escaner)
             self.estado = 0
             self.columna += 1
             self.escaner = ''
@@ -108,34 +109,24 @@ class AnalizadorLexico:
             self.columna += 1
             self.escaner += caracter
         else:
-            self.agregarErrorLexico(self.escaner)
+            self.agregarError(self.escaner)
             self.estado = 0
             self.columna += 1
             self.escaner = ''
-
-    def q3(self,caracter):
+            
+    def q4(self, caracter):
         if caracter != '\n':
-            self.estado = 4
+            self.estado = 3
             self.columna += 1
             self.escaner += caracter
         else:
-            #comentario ---
-            self.estado = 5
-            self.columna = 1
-            self.linea += 1
-
-    def q4(self,caracter):
-        if caracter != '\n':
-            self.estado = 4
-            self.columna += 1
-            self.escaner += caracter
-        else:
-            # comentario
+            # reconoce comentario ---
             self.estado = 5
             self.columna = 1
             self.linea += 1
 
     def q5(self):
+        #print(f'Comentario Simple: {self.buffer}')
         self.estado = 0
         self.i -= 1
         self.escaner = ''
@@ -146,7 +137,8 @@ class AnalizadorLexico:
             self.columna += 1
             self.escaner += caracter
         else:
-            self.agregarErrorLexico(self.escaner)
+            self.agregarError(self.escaner)
+            # self.agregarError(caracter)
             self.estado = 0
             self.columna += 1
             self.escaner = ''
@@ -182,6 +174,7 @@ class AnalizadorLexico:
             self.escaner += caracter
 
     def q10(self):
+        #print(f'Comentario Multilinea: {self.buffer}')
         self.estado = 0
         self.i -= 1
         self.escaner = ''
@@ -201,34 +194,17 @@ class AnalizadorLexico:
                 self.escaner = ''
                 self.estado = 0
 
+    def agregarSimbolo(self):
+        self.agregarToken('SIMBOLO', self.escaner)
+        self.escaner = ''
+        self.estado = 0
+        
     def q12(self):
-        self.agregarToken('SIMBOLO',self.escaner)
-        self.escaner = ''
-        self.estado = 0
+        self.agregarSimbolo()
 
-    def q13(self):
-        self.agregarToken('SIMBOLO',self.escaner)
-        self.escaner = ''
-        self.estado = 0
-
-    def q14(self):
-        self.agregarToken('SIMBOLO',self.escaner)
-        self.escaner = ''
-        self.estado = 0
-
-    def q15(self):
-        self.agregarToken('SIMBOLO',self.escaner)
-        self.escaner = ''
-        self.estado = 0
-
-    def q16(self):
-        self.agregarToken('SIMBOLO',self.escaner)
-        self.escaner = ''
-        self.estado = 0
-
-    def q17(self,caracter):
+    def q13(self,caracter):
         if caracter != '"':
-            if caracter == '\n':
+            if caracter == '\t' or caracter == '\n':
                 self.estado = 17
                 self.linea += 1
                 self.columna = 1
@@ -244,7 +220,7 @@ class AnalizadorLexico:
             self.columna += 1
             self.escaner += caracter
 
-    def q18(self,caracter):
+    def q14(self,caracter):
         if caracter != '"':
             self.estado = 18
             self.columna += 1
@@ -254,12 +230,12 @@ class AnalizadorLexico:
             self.columna += 1
             self.escaner += caracter
 
-    def q19(self):
-        self.agregarToken('cadena',self.escaner)
+    def q15(self):
+        self.agregarToken('IDENTIFICADOR',self.escaner)
         self.escaner = ''
         self.estado = 0
 
-    def q20(self, caracter):
+    def q16(self,caracter):
         if caracter != '}':
             self.estado = 21
             if caracter == '\n':
@@ -272,17 +248,8 @@ class AnalizadorLexico:
             self.estado = 22
             self.columna += 1
             self.escaner += caracter
-            
-            # Convertir la cadena JSON en un objeto Python
-            try:
-                objeto_json = json.loads(self.escaner)
-                self.agregarToken('objeto_json', objeto_json)
-            except ValueError:
-                self.agregarError('Error de sintaxis en JSON')
-            
-            self.escaner = ''
-            
-    def q21(self,caracter):
+
+    def q17(self,caracter):
         if caracter != ')':
             self.estado = 21
             if caracter == '\n':
@@ -295,16 +262,16 @@ class AnalizadorLexico:
             self.estado = 22
             self.columna += 1
 
-    def q22(self):
+    def q18(self):
         try:
             self.escaner = self.escaner[:-1]
         except: pass
-        self.agregarToken('data',self.escaner)
+        self.agregarToken('JSON',self.escaner)
         self.escaner = ''
         self.estado = 0
         self.i -= 1
 
-    def analizar (self,cadena):
+    def analizar(self,cadena):
         cadena += '\n'
         self.i = 0
         while(self.i < len(cadena)):
@@ -314,9 +281,7 @@ class AnalizadorLexico:
                 self.q1(cadena[self.i])
             elif self.estado == 2:
                 self.q2(cadena[self.i])
-            elif self.estado == 3:
-                self.q3(cadena[self.i])
-            elif self.estado == 4:
+            elif self.estado == 3 or self.estado == 4:
                 self.q4(cadena[self.i])
             elif self.estado == 5:
                 self.q5()
@@ -332,31 +297,22 @@ class AnalizadorLexico:
                 self.q10()
             elif self.estado == 11:
                 self.q11(cadena[self.i])
-            elif self.estado == 12:
+            elif self.estado == 12 or self.estado == 13 or self.estado == 14 or self.estado == 15 or self.estado == 16 :
                 self.q12()
-            elif self.estado == 13:
-                self.q13()
-            elif self.estado == 14:
-                self.q14()
-            elif self.estado == 15:
-                self.q15()
-            elif self.estado == 16:
-                self.q16()
             elif self.estado == 17:
-                self.q17(cadena[self.i])
+                self.q13(cadena[self.i])
             elif self.estado == 18:
-                self.q18(cadena[self.i])
+                self.q14(cadena[self.i])
             elif self.estado == 19:
-                self.q19()
+                self.q15()
             elif self.estado == 20:
-                self.q20(cadena[self.i])
+                self.q16(cadena[self.i])
             elif self.estado == 21:
-                self.q21(cadena[self.i])
+                self.q17(cadena[self.i])
             elif self.estado == 22:
-                self.q22()
+                self.q18()
             self.i += 1
-                
-                    
+
     def limpiarLista(self):
         global tokens
         global errores
@@ -383,18 +339,18 @@ class AnalizadorLexico:
                 sentencias.append(f"db.createCollection('{tokens[1]}');")
             elif tokens[0] == "InsertarUnico":
                 nombre_coleccion = tokens[1]
-                documento = tokens[2][1:-1]
+                documento = tokens[2][1:1]
                 sentencias.append(f"db.{nombre_coleccion}.insertOne({documento});")
             elif tokens[0] == "EliminarColeccion":
                 sentencias.append(f"db.{tokens[1]}.drop();")
             elif tokens[0] == "ActualizarUnico":
                 nombre_coleccion = tokens[1]
-                filtro = tokens[2][1:-1]
-                cambio = tokens[3][1:-1]
+                filtro = tokens[2][1:1]
+                cambio = tokens[3][1:1]
                 sentencias.append(f"db.{nombre_coleccion}.updateOne({filtro}, {cambio});")
             elif tokens[0] == "EliminarUnico":
                 nombre_coleccion = tokens[1]
-                filtro = tokens[2][1:-1]
+                filtro = tokens[2][1:1]
                 sentencias.append(f"db.{nombre_coleccion}.deleteOne({filtro});")
             elif tokens[0] == "BuscarTodo":
                 sentencias.append(f"db.{tokens[1]}.find();")
@@ -427,7 +383,7 @@ InsertarUnico dos = nueva InsertarUnico("Coleccion1",
 	}
 ");
 
-
+**
 EliminarColeccion c1 = nueva EliminarColeccion("Coleccion2");
 
 ActualizarUnico ac1 = nueva ActualizarUnico("Coleccion1",
@@ -448,12 +404,14 @@ EliminarUnico el1 = nueva EliminarUnico("Coleccion1",
 		"id" : 2
 	}
 
-"
+"*
 );
 
 
 BuscarTodo todo = nueva BuscarTodo("Coleccion1");
 '''
 #lexico = AnalizadorLexico()
-#exico.analizar(contenido)
+#lexico.analizar(contenido)
+#lexico.mostar_Errores()
+#lexico.mostar_Tokens()
 #lexico.generar(contenido)
